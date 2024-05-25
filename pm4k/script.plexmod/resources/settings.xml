@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+
+  <!-- General -->
+  <category label="32000">
+    <!-- <setting id="transcode_format" label="32023" type="labelenum" values="mkv|hls" default="mkv" /> -->
+
+    <!-- <setting id="playback_directplay_force" type="bool" label="32027" default="false" enable="eq(-1,true)" subsetting="true" /> -->
+
+    <setting id="kiosk.mode" type="bool" label="32043" default="true" />
+    <setting id="auto_signin" type="bool" label="32038" default="true" />
+    <setting id="speedy_home_hubs2" type="bool" label="33503" default="false" />
+    <setting id="theme_music" type="text" label="32480" default="2" />
+    <setting id="allow_hevc" type="bool" label="32037" default="true" />
+    <setting id="allow_av1" type="bool" label="32601" default="true" />
+    <setting id="debug" type="bool" label="32024" default="false" />
+    <setting id="oldprofile" type="bool" label="33400" default="false" />
+    <setting id="subtitle_use_extended_title" type="bool" label="32950" default="true" />
+    <setting id="poster_resolution_scale_perc" type="text" label="32956" default="300" />
+    <setting id="retrieve_all_media_up_front" type="bool" label="32969" default="false" />
+    <setting id="library_chunk_size" type="text" label="32971" default="240" />
+  </category>
+  <category label="32464">
+    <setting id="auto_seek" type="bool" label="32466" default="true" />
+    <setting id="auto_seek_delay" type="number" label="32487" default="1" />
+    <setting id="kodi_skip_stepping" type="bool" label="32465" default="false" />
+    <setting id="dynamic_timeline_seek" type="bool" label="32471" default="false" />
+    <setting id="show_media_ends_info" type="bool" label="32540" default="true" />
+    <setting id="show_media_ends_label" type="bool" label="32542" default="true" />
+    <setting id="player_show_buffer" type="bool" label="32912" default="true" />
+    <setting id="buffer_wait_max" type="number" label="32918" default="120" />
+    <setting id="buffer_insufficient_wait" type="number" label="32920" default="10" />
+    <setting id="consecutive_video_pb_wait" type="number" label="32963" default="0" />
+  </category>
+  <category label="33612">
+    <setting id="auto_skip_offset" type="text" label="33629" default="2.5" />
+    <setting id="skip_intro_button_timeout" type="number" label="32521" default="10" />
+    <setting id="skip_credits_button_timeout" type="number" label="32525" default="10" />
+    <setting id="skip_intro_button_show_early_threshold1" type="number" label="33509" default="60" />
+    <setting id="skip_marker_timer_cancel" type="bool" label="32906" default="true" />
+    <setting id="skip_marker_timer_immediate" type="bool" label="32908" default="false" />
+  </category>
+  <category label="32467">
+    <setting id="fast_back" type="bool" label="32485" default="true" />
+    <setting id="postplay_always" type="bool" label="32500" default="false" />
+    <setting id="dynamic_backgrounds" type="bool" label="32468" default="true" />
+    <setting id="dbg_crossfade" type="bool" label="32943" default="true" />
+    <setting id="background_colour" type="text" label="33200" default="#00000000" />
+    <setting id="background_art_blur_amount2" type="number" label="32469" default="0" />
+    <setting id="background_art_opacity_amount2" type="number" label="32470" default="25" />
+    <setting id="use_bg_fallback" type="bool" label="32929" default="false" />
+    <setting id="continue_use_thumb" type="bool" label="32927" default="true" />
+    <setting id="playlist_visit_media" type="bool" label="32505" default="true" />
+    <setting id="postplay_timeout" type="number" label="32501" default="16" />
+    <setting id="postplay_cancel" type="bool" label="32905" default="true" />
+  </category>
+  <category label="32488">
+    <setting id="screensaver_quiz" type="bool" label="32489" default="false" />
+  </category>
+  <category label="33600">
+    <setting id="requests_timeout" type="number" label="33620" default="5" />
+    <setting id="conn_check_timeout" type="text" label="33632" default="2.5" />
+    <setting id="local_reach_timeout" type="number" label="33622" default="10" />
+  </category>
+  <category label="Plex">
+	<setting type="lsep" label="plex.tv"/>
+<setting id="myplex.MyPlexAccount" type="text" default="{&quot;ID&quot;: &quot;98416110&quot;, &quot;authToken&quot;: &quot;mz-utKu4-jWFUoz87Kq4&quot;, &quot;isPlexPass&quot;: false, &quot;isManaged&quot;: true, &quot;isAdmin&quot;: false, &quot;isSecure&quot;: true, &quot;adminHasPlexPass&quot;: true, &quot;isOffline&quot;: true}" visible="false" /><!-- Current plex.tv status: -->
+<setting id="None.PlexServerManager" type="text" default="{&quot;servers&quot;: [{&quot;name&quot;: &quot;-&quot;, &quot;uuid&quot;: &quot;0ed24cfcbd873567e7d6a60acd889f4de33d7dc6&quot;, &quot;sameNetwork&quot;: true, &quot;connections&quot;: [{&quot;sources&quot;: 2, &quot;address&quot;: &quot;https://103-136-94-10.0a00e569efc14e619c867c4b9f547c52.plex.direct:32400&quot;, &quot;isLocal&quot;: true, &quot;isSecure&quot;: true, &quot;token&quot;: &quot;z5hWP5aAzz4ox6r4aCuP&quot;}]}]}" visible="false" /><!-- Current plex.tv status: -->
+  </category>
+</settings>
