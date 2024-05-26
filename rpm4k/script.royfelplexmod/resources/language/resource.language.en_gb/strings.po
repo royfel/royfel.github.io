@@ -562,11 +562,11 @@ msgid "Date Viewed"
 msgstr ""
 
 msgctxt "#32357"
-msgid "By Name"
+msgid "By Title"
 msgstr ""
 
 msgctxt "#32358"
-msgid "Name"
+msgid "Title"
 msgstr ""
 
 msgctxt "#32359"
@@ -1968,4 +1968,8 @@ msgstr ""
 
 msgctxt "#33041"
 msgid "Show hub: {}"
+msgstr ""
+
+msgctxt "#33042"
+msgid "Episode Date Added"
 msgstr ""
