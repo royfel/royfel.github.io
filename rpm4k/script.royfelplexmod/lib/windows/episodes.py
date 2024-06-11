@@ -564,10 +564,8 @@ class EpisodesWindow(kodigui.ControlledWindow, windowutils.UtilMixin, SeasonsMix
         if not data:
             return
 
-        util.DEBUG_LOG("Storing video progress data: {}".format(data))
-        if not self._videoProgress:
-            self._videoProgress = {}
-        self._videoProgress[data[0]] = data[1]
+        util.DEBUG_LOG("Storing video progress data: {}", data)
+        VIDEO_PROGRESS[data[0]] = data[1]
 
     def checkOptionsAction(self, action):
         if action == xbmcgui.ACTION_MOVE_UP:
