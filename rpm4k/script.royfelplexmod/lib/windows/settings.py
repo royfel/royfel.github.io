@@ -290,6 +290,11 @@ class Settings(object):
                     T(32999, "")
                 ),
                 BoolSetting(
+                    'hubs_round_robin', T(33043, ''), False
+                ).description(
+                    T(33044, "")
+                ),
+                BoolSetting(
                     'hubs_bifurcation_lines', T(32961, 'Show hub bifurcation lines'), False
                 ).description(
                     T(32962, "Visually separate hubs horizontally using a thin line.")
@@ -306,7 +311,7 @@ class Settings(object):
                 PlayedThresholdSetting('played_threshold', T(33501, 'Video played threshold'), 1).description(
                     T(
                         33502,
-                        "Set this to the same value as your Plex server (Settings>Library>Video played threshold) to av"
+                        "Set this to the same value as your ROYFEL server (Settings>Library>Video played threshold) to av"
                         "oid certain pitfalls, Default: 90 %"
                     )
                 )
@@ -371,13 +376,13 @@ class Settings(object):
                 ),
                 BoolSetting('burn_ssa', T(32944, 'Burn-in SSA subtitles'),
                             True).description(
-                    T(32945, 'When Direct Streaming instruct the Plex Server to burn in SSA/ASS subtitles (thus '
+                    T(32945, 'When Direct Streaming instruct the ROYFEL Server to burn in SSA/ASS subtitles (thus '
                              'transcoding the video stream). If disabled it will not touch the video stream, but '
                              'will convert the subtitle to unstyled text.')
                 ),
                 BoolSetting('forced_subtitles_override', T(32941, 'Forced subtitles fix'),
                             False).description(
-                    T(32493, 'When a media file has a forced/foreign subtitle for a subtitle-enabled language, the Plex'
+                    T(32493, 'When a media file has a forced/foreign subtitle for a subtitle-enabled language, the ROYFEL'
                              ' Media Server preselects it. This behaviour is usually not necessary and not configurable'
                              '. This setting fixes that by ignoring the PMSs decision and selecting the same language '
                              'without a forced flag if possible.')
@@ -428,6 +433,8 @@ class Settings(object):
                         ('never', T(32033, 'Never'))
                     )
                 ).description(T(32939, 'Only applies to video player UI')),
+                BoolSetting('player_official', T(33045, 'Behave like other ROYFEL OTT clients'), True).description(
+                    T(33046, '')),
             )
         ),
         'player_user': (
@@ -442,7 +449,7 @@ class Settings(object):
                     'virtual_chapters', T(33603, 'Use virtual chapters'), True
                 ).description(
                     T(33604, 'When the above is enabled and no video chapters are available, simulate them by using the'
-                             ' markers identified by the Plex Server (Intro, Credits).')
+                             ' markers identified by the ROYFEL Server (Intro, Credits).')
                 ),
                 BoolUserSetting(
                     'auto_skip_in_transcode', T(32948, 'Allow auto-skip when transcoding'), True
@@ -501,15 +508,15 @@ class Settings(object):
                 ),
                 BoolSetting('smart_discover_local', T(33625, 'Smart LAN/local server discovery'), True)
                     .description(
-                    T(33626, "Checks whether servers returned from Plex.tv are actually local/in your LAN. "
-                             "For specific setups (e.g. Docker) Plex.tv might not properly detect a local "
+                    T(33626, "Checks whether servers returned from royfel.com are actually local/in your LAN. "
+                             "For specific setups (e.g. Docker) royfel.com might not properly detect a local "
                              "server.\n\nNOTE: Only works on Kodi 19 or above."
                       )
                 ),
                 BoolSetting('prefer_local', T(33627, 'Prefer LAN/local servers over security'), False)
                     .description(
                     T(33628, "Prioritizes local connections over secure ones. Needs the proper setting in \"Allow "
-                             "Insecure Connections\" and the Plex Server's \"Secure connections\" at \"Preferred\". "
+                             "Insecure Connections\" and the ROYFEL Server's \"Secure connections\" at \"Preferred\". "
                              "Can be used to enforce manual servers."
                       )
                 ),
@@ -529,8 +536,8 @@ class Settings(object):
         'system': (
             T(33600, 'System'), (
 
-                BoolSetting('kiosk.mode', T(32043, 'Start Plex On Kodi Startup'), False),
-                BoolSetting('exit_default_is_quit', T(32965, 'Start Plex On Kodi Startup'), False)
+                BoolSetting('kiosk.mode', T(32043, 'Start OTT on ROYFEL Startup'), False),
+                BoolSetting('exit_default_is_quit', T(32965, 'Start OTT on ROYFEL Startup'), False)
                 .description(T(32966, "stub")),
                 BoolSetting('path_mapping', T(33000, ''), True).description(T(33001, '')),
                 BufferSetting('cache_size',
