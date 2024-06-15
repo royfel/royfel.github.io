@@ -1848,6 +1848,8 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
         self.setProperty('hub.4{0:02d}'.format(index), hub.title or kwargs.get('title'))
         self.setProperty('hub.text2lines.4{0:02d}'.format(index), text2lines and '1' or '')
 
+        use_reselect_pos = reselect_pos is not None and (reselect_pos > 0 or reselect_pos == -1)
+
         items = []
 
         check_spoilers = False
@@ -1983,7 +1985,6 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
             self.onNewServer()
 
     def onSelectedServerChange(self, **kwargs):
-        util.DEBUG_LOG("YEELLO")
         if self.serverRefresh():
             self.setFocusId(self.SECTION_LIST_ID)
             self.changingServer = False
