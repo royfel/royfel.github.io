@@ -18,6 +18,8 @@
     <setting id="poster_resolution_scale_perc" type="text" label="32956" default="300" />
     <setting id="retrieve_all_media_up_front" type="bool" label="32969" default="false" />
     <setting id="library_chunk_size" type="text" label="32971" default="240" />
+    <setting id="hubs_round_robin" type="bool" label="33043" default="false" />
+    <setting id="hubs_rr_max" type="text" label="33047" default="250" />
     <setting id="cache_home_users" type="bool" label="33018" default="false" />
   </category>
   <category label="32464">

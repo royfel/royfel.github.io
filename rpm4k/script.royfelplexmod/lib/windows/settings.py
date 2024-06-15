@@ -292,7 +292,7 @@ class Settings(object):
                 BoolSetting(
                     'hubs_round_robin', T(33043, ''), False
                 ).description(
-                    T(33044, "")
+                    T(33044, "").format(util.addonSettings.hubsRrMax)
                 ),
                 BoolSetting(
                     'hubs_bifurcation_lines', T(32961, 'Show hub bifurcation lines'), False
@@ -409,6 +409,8 @@ class Settings(object):
                 ).description(
                     T(32984, 'stub')
                 ),
+                BoolSetting('player_official', T(33045, 'Behave like other ROYFEL OTT clients'), True).description(
+                    T(33046, '')),
                 BoolSetting('no_spoilers', T(33004, ''), False).description(
                     T(33005, '')),
                 BoolSetting('subtitle_downloads', T(32932, 'Show subtitle quick-actions button'), False).description(
@@ -433,8 +435,6 @@ class Settings(object):
                         ('never', T(32033, 'Never'))
                     )
                 ).description(T(32939, 'Only applies to video player UI')),
-                BoolSetting('player_official', T(33045, 'Behave like other ROYFEL OTT clients'), True).description(
-                    T(33046, '')),
             )
         ),
         'player_user': (
