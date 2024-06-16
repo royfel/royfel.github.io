@@ -64,7 +64,9 @@
   <category label="33600">
     <setting id="verify_mapped_files" type="bool" label="33002" default="true" />
     <setting id="ignore_docker_v4" type="bool" label="33014" default="true" />
+    <setting id="use_cert_bundle" type="text" label="33051" default="plex.direct" />
     <setting id="requests_timeout" type="number" label="33620" default="10" />
+    <setting id="max_retries" type="number" label="33049" default="1" />
     <setting id="conn_check_timeout" type="text" label="33632" default="2.5" />
     <setting id="local_reach_timeout" type="number" label="33622" default="10" />
     <setting id="worker_count" type="number" label="32981" default="3" />

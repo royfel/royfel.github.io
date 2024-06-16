@@ -200,6 +200,8 @@ class AddonSettings(object):
         ("cache_home_users", True),
         ("intro_marker_max_offset", 600),
         ("hubs_rr_max", 250),
+        ("max_retries", 1),
+        ("use_cert_bundle", "system"),
     )
 
     def __init__(self):
