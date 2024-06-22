@@ -12,6 +12,7 @@ import time
 import datetime
 import contextlib
 import types
+import subprocess
 
 import unicodedata
 
@@ -821,7 +822,7 @@ def getTimeFormat():
 
     # Kodi Omega on Android seems to have borked the regional format returned separately
     # (not happening on Windows at least). Format returned can be "%H:mm:ss", which is incompatible with strftime; fix.
-    adjustedFmt = adjustedFmt.replace("mm", "%M").replace("ss", "%S").replace("xx", "%p")
+    adjustedFmt = adjustedFmt.replace("mm", "%M").replace("ss", "%S").replace("xx", "%p").replace("M", "%M")
     adjustedFmtKN = adjustedFmt.replace("%M", "mm").replace("%H", "hh").replace("%I", "h").replace("%S", "ss").\
         replace("%p", "xx").replace(nonPadIF, "h").replace(nonPadHF, "h")
 
@@ -953,6 +954,30 @@ def getPlatform():
     ]:
         if xbmc.getCondVisibility(key):
             return key.rsplit('.', 1)[-1]
+
+
+platform = getPlatform()
+
+
+# There are lots of different devices and different ways to get the device model.  This way is known
+# to work with the Ugoos am6b+ device but probably doesn't work for others.
+def getDeviceModel():
+    try:
+        deviceModel = "Unknown"
+        if platform == "RaspberryPi":
+            stdout = subprocess.check_output('cat /proc/cpuinfo', shell=True).decode()
+            hardwareRegex = re.compile(r'Hardware\s*:\s*(.*)')
+            match = hardwareRegex.search(stdout)
+            deviceModel = "Unknown"
+            if match:
+                deviceModel = match.group(1)
+
+        return deviceModel
+    except:
+        return "Unknown"
+
+
+deviceModel = getDeviceModel()
 
 
 def getRunningAddons():

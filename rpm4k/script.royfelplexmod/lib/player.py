@@ -207,6 +207,7 @@ class SeekPlayerHandler(BasePlayerHandler):
         self.skipPostPlay = False
         self.prePlayWitnessed = False
         self.queuingNext = False
+        self.useAlternateSeek = util.deviceModel in ["UGOOS AM6B"]
         self.reset()
 
     def reset(self):
@@ -414,8 +415,18 @@ class SeekPlayerHandler(BasePlayerHandler):
                 return False
             self.updateNowPlaying(state=self.player.STATE_PAUSED)  # To for update after seek
 
-            util.DEBUG_LOG("SeekAbsolute: Seeking to {0}".format(self.seekOnStart))
-            self.player.seekTime(self.seekOnStart / 1000.0)
+            # Some devices seem to have an issue with the self.player.seekTime function where after the seek the video
+            # will be playing, but the audio won't for a few seconds(I've seen up to 15 seconds).  Using this alternate
+            # way to seek avoids that issue.
+            if self.useAlternateSeek:
+                currentTime = self.player.getTime()
+                relativeSeekSeconds = seekSeconds - currentTime
+                util.DEBUG_LOG("SeekAbsolute: Seeking to offset: {0}, current time: {1}, relative seek: {2}".format(
+                    seekSeconds, currentTime, relativeSeekSeconds))
+                xbmc.executebuiltin('Seek({})'.format(relativeSeekSeconds))
+            else:
+                util.DEBUG_LOG("SeekAbsolute: Seeking to {0}", self.seekOnStart)
+                self.player.seekTime(seekSeconds)
         return True
 
     def onAVChange(self):
@@ -892,7 +903,9 @@ class BGMPlayerHandler(BasePlayerHandler):
         self.oldVolume = util.rpc.Application.GetProperties(properties=["volume"])["volume"]
 
     def onPlayBackStarted(self):
-        util.DEBUG_LOG("BGM: playing theme for %s" % self.currentlyPlaying)
+        self.player.bgmStarting = False
+        self.player.trigger('bgm.started')
+        util.DEBUG_LOG("BGM: playing theme for {}", self.currentlyPlaying)
 
     def _setVolume(self, vlm):
         xbmc.executebuiltin("SetVolume({})".format(vlm))
@@ -962,7 +975,6 @@ class BGMPlayerTask(backgroundthread.Task):
             util.MONITOR.waitForAbort(0.1)
             ct += 1
 
-        self.player.trigger('bgm.started')
         self.player.play(self.source, windowed=True)
 
 
@@ -985,6 +997,7 @@ class PlexPlayer(xbmc.Player, signalsmixin.SignalsMixin):
         self._nextItem = None
         self.started = False
         self.bgmPlaying = False
+        self.bgmStarting = False
         self.lastPlayWasBGM = False
         self.BGMTask = None
         self.pauseAfterPlaybackStarted = False
@@ -1097,6 +1110,7 @@ class PlexPlayer(xbmc.Player, signalsmixin.SignalsMixin):
             self.BGMTask.cancel()
 
         self.started = False
+        self.bgmStarting = True
         self.handler = BGMPlayerHandler(self, rating_key)
 
         # store current volume if it's different from the BGM volume
