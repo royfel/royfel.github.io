@@ -64,6 +64,7 @@ class PrePlayWindow(kodigui.ControlledWindow, windowutils.UtilMixin, RatingsMixi
 
     def __init__(self, *args, **kwargs):
         kodigui.ControlledWindow.__init__(self, *args, **kwargs)
+        PlaybackBtnMixin.__init__(self)
         self.video = kwargs.get('video')
         self.parentList = kwargs.get('parent_list')
         self.videos = None
