@@ -321,7 +321,7 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
     HUBMAP = {
         # HOME
         'home.continue': {'index': 0, 'with_progress': True, 'with_art': True, 'do_updates': True, 'text2lines': True},
-        # This hub can be enabled in the settings so PM4K behaves like any other Plex client.
+        # This hub can be enabled in the settings so RPM4K behaves like any other Plex client.
         # It overrides home.continue and home.ondeck
         'continueWatching': {'index': 1, 'with_progress': True, 'do_updates': True, 'text2lines': True},
         'home.ondeck': {'index': 1, 'with_progress': True, 'do_updates': True, 'text2lines': True},

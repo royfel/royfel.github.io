@@ -1535,19 +1535,19 @@ msgid "Audio/Subtitles"
 msgstr ""
 
 msgctxt "#32932"
-msgid "Show subtitle quick-actions button"
+msgid "Subtitle quick-actions"
 msgstr ""
 
 msgctxt "#32933"
-msgid "Show FFWD/RWD buttons"
+msgid "FFWD/RWD"
 msgstr ""
 
 msgctxt "#32934"
-msgid "Show repeat button"
+msgid "Repeat"
 msgstr ""
 
 msgctxt "#32935"
-msgid "Show shuffle button"
+msgid "Shuffle"
 msgstr ""
 
 msgctxt "#32936"
@@ -1631,7 +1631,7 @@ msgid "Poster resolution scaling %"
 msgstr ""
 
 msgctxt "#32957"
-msgid "In percent. Scales the resolution of all posters/thumbnails for better image quality. May impact PMS/PM4K performance, will increase the cache usage accordingly. Recommended: 200-300 % for for big screens if your hardware can handle it. Needs addon restart."
+msgid "In percent. Scales the resolution of all posters/thumbnails for better image quality. May impact PMS/RPM4K performance, will increase the cache usage accordingly. Recommended: 200-300 % for for big screens if your hardware can handle it. Needs addon restart."
 msgstr ""
 
 msgctxt "#32958"
@@ -1779,7 +1779,7 @@ msgid "{} unhandled royfel.direct connections found"
 msgstr ""
 
 msgctxt "#32994"
-msgid "In order for PM4K to work properly, we need to add special handling for royfel.direct connections. We've found {} new unhandled connections. Do you want us to write those to ROYFEL OTT's advancedsettings.xml automatically? If not, you might want to add royfel.direct to your router's DNS rebind exemption list. This can be changed in the settings as well."
+msgid "In order for RPM4K to work properly, we need to add special handling for royfel.direct connections. We've found {} new unhandled connections. Do you want us to write those to ROYFEL OTT's advancedsettings.xml automatically? If not, you might want to add royfel.direct to your router's DNS rebind exemption list. This can be changed in the settings as well."
 msgstr ""
 
 msgctxt "#32995"
@@ -2024,4 +2024,12 @@ msgstr ""
 
 msgctxt "#33055"
 msgid "Custom"
+msgstr ""
+
+msgctxt "#33056"
+msgid "None"
+msgstr ""
+
+msgctxt "#33057"
+msgid "Show buttons"
 msgstr ""

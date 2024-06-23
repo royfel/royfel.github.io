@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: PM4K / PlexMod for Kodi\n"
+"Project-Id-Version: RPM4K / PlexMod for Kodi\n"
 "Language: it\n"
 
 #: 
@@ -2012,10 +2012,10 @@ msgstr "Recensioni"
 msgctxt "#32954"
 msgid "Needs Kodi restart. WARNING: This will overwrite advancedsettings.xml!\n"
 "\n"
-"To customize other cache/network-related values, copy \"script.plexmod/pm4k_cache_template.xml\" to profile folder and edit it to your liking. (See About section for the file paths)"
+"To customize other cache/network-related values, copy \"script.royfelplexmod/pm4k_cache_template.xml\" to profile folder and edit it to your liking. (See About section for the file paths)"
 msgstr "Necessita riavvio di Kodi. ATTENZIONE: Questo sovrascriverà il file advancedsettings.xml!\n"
 "\n"
-"Per personalizzare altri valori relativi alla cache/rete, copia \"script.plexmod/pm4k_cache_template.xml\" nella cartella del profilo e modificalo secondo le tue preferenze. (Consulta la sezione Informazioni per i percorsi dei file)"
+"Per personalizzare altri valori relativi alla cache/rete, copia \"script.royfelplexmod/pm4k_cache_template.xml\" nella cartella del profilo e modificalo secondo le tue preferenze. (Consulta la sezione Informazioni per i percorsi dei file)"
 
 #: 
 msgctxt "#32955"
@@ -2029,8 +2029,8 @@ msgstr "Ridimensionamento della risoluzione dei poster %"
 
 #: 
 msgctxt "#32957"
-msgid "In percent. Scales the resolution of all posters/thumbnails for better image quality. May impact PMS/PM4K performance, will increase the cache usage accordingly. Recommended: 200-300 % for for big screens if your hardware can handle it. Needs addon restart."
-msgstr "In percentuale. Ridimensiona la risoluzione di tutti i poster/miniature per una migliore qualità dell'immagine. Potrebbe influire sulle prestazioni di PMS/PM4K, aumenterà di conseguenza l'utilizzo della cache. Consigliato: 200-300 % per schermi grandi se l'hardware lo supporta. Necessita riavvio dell'addon."
+msgid "In percent. Scales the resolution of all posters/thumbnails for better image quality. May impact PMS/RPM4K performance, will increase the cache usage accordingly. Recommended: 200-300 % for for big screens if your hardware can handle it. Needs addon restart."
+msgstr "In percentuale. Ridimensiona la risoluzione di tutti i poster/miniature per una migliore qualità dell'immagine. Potrebbe influire sulle prestazioni di PMS/RPM4K, aumenterà di conseguenza l'utilizzo della cache. Consigliato: 200-300 % per schermi grandi se l'hardware lo supporta. Necessita riavvio dell'addon."
 
 #: 
 msgctxt "#32958"
@@ -2167,9 +2167,9 @@ msgstr "Tema del Player"
 #: 
 msgctxt "#32984"
 msgid "Sets the player theme. Currently only customizes the playback control buttons. ATTENTION: [I]Might[/I] need an addon restart.\n"
-"In order to customize this, copy one of the xml's in script.plexmod/resources/skins/Main/1080i/templates to addon_data/script.plexmod/templates/seek_dialog_buttons_custom.xml and adjust it to your liking, then select \"Custom\" as your theme."
+"In order to customize this, copy one of the xml's in script.royfelplexmod/resources/skins/Main/1080i/templates to addon_data/script.royfelplexmod/templates/seek_dialog_buttons_custom.xml and adjust it to your liking, then select \"Custom\" as your theme."
 msgstr "Imposta il tema del lettore. Attualmente personalizza solo i pulsanti di controllo della riproduzione. ATTENZIONE: [I]Potrebbe[/I] essere necessario riavviare l'addon. \n"
-"Per personalizzarlo, copia uno degli xml in script.plexmod/resources/skins/Main/1080i/templates in addon_data/script.plexmod/templates/seek_dialog_buttons_custom.xml e modificalo secondo le tue preferenze, quindi seleziona \"Personalizzato\" come tema."
+"Per personalizzarlo, copia uno degli xml in script.royfelplexmod/resources/skins/Main/1080i/templates in addon_data/script.royfelplexmod/templates/seek_dialog_buttons_custom.xml e modificalo secondo le tue preferenze, quindi seleziona \"Personalizzato\" come tema."
 
 #: 
 msgctxt "#32985"
@@ -2218,8 +2218,8 @@ msgstr "{} connessioni plex.direct non gestite trovate"
 
 #: 
 msgctxt "#32994"
-msgid "In order for PM4K to work properly, we need to add special handling for plex.direct connections. We've found {} new unhandled connections. Do you want us to write those to Kodi's advancedsettings.xml automatically? If not, you might want to add plex.direct to your router's DNS rebind exemption list. This can be changed in the settings as well."
-msgstr "Perché PM4K funzioni correttamente, è necessario aggiungere un trattamento speciale per le connessioni plex.direct. Abbiamo trovato {} nuove connessioni non gestite. Vuoi che le scriviamo automaticamente nel file advancedsettings.xml di Kodi? In alternativa, dovresti aggiungere plex.direct all'elenco di eccezioni del reindirizzamento DNS del router. Questo può essere cambiato anche nelle impostazioni."
+msgid "In order for RPM4K to work properly, we need to add special handling for plex.direct connections. We've found {} new unhandled connections. Do you want us to write those to Kodi's advancedsettings.xml automatically? If not, you might want to add plex.direct to your router's DNS rebind exemption list. This can be changed in the settings as well."
+msgstr "Perché RPM4K funzioni correttamente, è necessario aggiungere un trattamento speciale per le connessioni plex.direct. Abbiamo trovato {} nuove connessioni non gestite. Vuoi che le scriviamo automaticamente nel file advancedsettings.xml di Kodi? In alternativa, dovresti aggiungere plex.direct all'elenco di eccezioni del reindirizzamento DNS del router. Questo può essere cambiato anche nelle impostazioni."
 
 #: 
 msgctxt "#32995"
@@ -2253,8 +2253,8 @@ msgstr "Abilita path mapping"
 
 #: 
 msgctxt "#33001"
-msgid "Honor path_mapping.json in the addon_data/script.plexmod folder when DirectPlaying media. This can be used to stream using other techniques such as SMB/NFS/etc. instead of the default HTTP handler. path_mapping.example.json is included in the addon's main directory."
-msgstr "Rispetta path_mapping.json nella cartella addon_data/script.plexmod quando riproduci direttamente i media. Questo può essere utilizzato per lo streaming utilizzando altre tecniche come SMB/NFS/ecc. invece dell'handler HTTP predefinito. È incluso un'esempio di path_mapping.json nella cartella principale dell'addon come path_mapping.example.json."
+msgid "Honor path_mapping.json in the addon_data/script.royfelplexmod folder when DirectPlaying media. This can be used to stream using other techniques such as SMB/NFS/etc. instead of the default HTTP handler. path_mapping.example.json is included in the addon's main directory."
+msgstr "Rispetta path_mapping.json nella cartella addon_data/script.royfelplexmod quando riproduci direttamente i media. Questo può essere utilizzato per lo streaming utilizzando altre tecniche come SMB/NFS/ecc. invece dell'handler HTTP predefinito. È incluso un'esempio di path_mapping.json nella cartella principale dell'addon come path_mapping.example.json."
 
 #: 
 msgctxt "#33002"

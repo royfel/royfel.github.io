@@ -1,4 +1,4 @@
-[- 0.9.0-rev7 -]
+[- 0.9.0-rev9 -]
 - To be continued..
 
 [- 0.9.0 -]
@@ -9,7 +9,7 @@
 - Home: Dynamically reload home when relevant settings have changed
 - Home/Sections: Improve handling for sections that errored out once, and retry loading them just like any stale section every 5 minutes
 - Home: Fix hubs not coming back after disconnect
-- Home: Harden disconnect handling in general; PM4K should be able to "live" forever now
+- Home: Harden disconnect handling in general; RPM4K should be able to "live" forever now
 - Home: Refresh last section on: screensaver deactivated, DPMS deactivated, system wakeup after sleep
 - Home/PowerEvents: Disable updates when system goes to sleep, enable them when it wakes up; force a hubs update when waking up
 - Home: Probably fix long-running section change issue (partially reverting a previous change and being a little smarter about the current selection state); add debug logging for when we detect the "anomaly"
@@ -314,7 +314,7 @@
 - Settings: Add setting to use Kodi keyboard for searching (default: off)
 - Main: harden main loop (still not exiting properly when exiting fast after server change; reinits previously inited windows on exit, sometimes)
 - SubtitleDownload/OpenSubtitles.com: set global videoinfo infoLabels to improve subtitle search hinting (waiting for PR to be accepted)
-- Fix kiosk mode startup issue when other modal dialogs were active when PM4K was trying to start in kiosk mode
+- Fix kiosk mode startup issue when other modal dialogs were active when RPM4K was trying to start in kiosk mode
 - Fix video OSD hiding too fast in certain circumstances
 - Fix photoplayer issues; skip ugly initial loading image; show loading state only when it takes longer than 500ms; fix prev/next not always working; increase speed by x10
 - Fix episodes view replaying the theme music when returning from a different-season-view
@@ -508,7 +508,7 @@ Migrate previous binge mode data to new extensible format, stored as addon_data/
 
 [- 0.5.4 -]
 - Store user thumbnail in cache (improves home "load" time)
-- Change client identifier from Plex-for-Kodi to PM4K;
+- Change client identifier from Plex-for-Kodi to RPM4K;
   possibly fix "PlexNet" entries in Authorized Devices; might also break stuff, please report back
 - fix closing quote in chinese translation
 - Add missing German translations
