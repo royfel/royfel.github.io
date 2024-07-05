@@ -151,7 +151,7 @@ class SpoilersMixin(object):
         self.spoilersAllowedFor = True
         self.storeSpoilerSettings()
 
-    def storeSpoilerSettings(self)
+    def storeSpoilerSettings(self):
         self.spoilerSetting = util.getSetting('no_episode_spoilers2', "unwatched")
         self.noTitles = util.getSetting('no_unwatched_episode_titles', False)
         self.spoilersAllowedFor = util.getSetting('spoilers_allowed_genres2', ["Reality", "Game Show", "Documentary",
