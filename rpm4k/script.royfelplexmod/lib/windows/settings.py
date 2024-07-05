@@ -343,11 +343,11 @@ class Settings(object):
                 ).description(
                     T(33013, "")
                 ),
-                BoolSetting(
-                    'spoilers_allowed_genres', T(33016, ''), True
-                ).description(
-                    T(33017, "").format(", ".join('"{}"'.format(t) for t in util.SPOILER_ALLOWED_GENRES))
-                ),
+                MultiOptionsSetting(
+                    'spoilers_allowed_genres2', T(33016, ''),
+                    ["Reality", "Game Show", "Documentary", "Sport"],
+                    [(g, g) for g in util.GENRES_TV]
+                ).description(T(33017, "")),
                 BoolSetting(
                     'hubs_use_new_continue_watching', T(32998, ''), False
                 ).description(
@@ -722,8 +722,11 @@ class SettingsWindow(kodigui.BaseWindow, windowutils.UtilMixin):
             self.checkSection()
             controlID = self.getFocusId()
             if action in (xbmcgui.ACTION_NAV_BACK, xbmcgui.ACTION_PREVIOUS_MENU):
-                if self.getFocusId() == self.OPTIONS_LIST_ID:
+                if controlID == self.OPTIONS_LIST_ID:
                     self.setFocusId(self.SETTINGS_LIST_ID)
+                    return
+                elif controlID == self.SETTINGS_LIST_ID:
+                    self.setFocusId(self.SECTION_LIST_ID)
                     return
                 # elif not xbmc.getCondVisibility('ControlGroup({0}).HasFocus(0)'.format(self.TOP_GROUP_ID)):
                 #     self.setFocusId(self.TOP_GROUP_ID)
@@ -861,9 +864,10 @@ class SettingsWindow(kodigui.BaseWindow, windowutils.UtilMixin):
         if isinstance(idx, int):
             idx = [idx]
         for _idx in idx:
-            self.optionsList.selectItem(_idx)
             if setting.type == 'MULTI':
                 self.optionsList[_idx].setProperty('checkbox.checked', '1')
+        if idx:
+            self.optionsList.selectItem(idx[-1])
         self.setFocusId(self.OPTIONS_LIST_ID)
 
     def toggleBool(self, mli, setting):
