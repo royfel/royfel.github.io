@@ -491,7 +491,7 @@ class SeekPlayerHandler(BasePlayerHandler):
 
     @property
     def videoWatched(self):
-        return self.videoPlayedFac >= self.playedThreshold
+        return self.videoPlayedFac >= self.playedThreshold or self.player.isExternal
 
     def triggerProgressEvent(self):
         if not self.player.video:
@@ -537,7 +537,8 @@ class SeekPlayerHandler(BasePlayerHandler):
             self.sessionEnded()
 
     def onPlayBackEnded(self):
-        util.DEBUG_LOG('SeekHandler: onPlayBackEnded - Seeking={0}'.format(self.seeking))
+        util.DEBUG_LOG('SeekHandler: onPlayBackEnded - Seeking={0}, External={1}',
+                       self.seeking, self.player.isExternal)
 
         if self.dialog:
             self.dialog.onPlayBackEnded()
@@ -555,7 +556,7 @@ class SeekPlayerHandler(BasePlayerHandler):
             util.DEBUG_LOG('SeekHandler: onPlayBackEnded - event ignored')
             return
 
-        self.stoppedManually = False
+        self.stoppedManually = False if not self.player.isExternal else True
 
         if self.playlist and self.playlist.hasNext():
             self.queuingNext = True
@@ -568,7 +569,7 @@ class SeekPlayerHandler(BasePlayerHandler):
             if self.seeking != self.SEEK_PLAYLIST:
                 self.hideOSD()
 
-            if self.seeking not in (self.SEEK_IN_PROGRESS, self.SEEK_PLAYLIST):
+            if self.seeking not in (self.SEEK_IN_PROGRESS, self.SEEK_PLAYLIST) or self.player.isExternal:
                 self.sessionEnded()
 
     def onPlayBackPaused(self):
@@ -991,6 +992,7 @@ class PlexPlayer(xbmc.Player, signalsmixin.SignalsMixin):
         signalsmixin.SignalsMixin.__init__(self)
         self.sessionID = None
         self.handler = AudioPlayerHandler(self)
+        self.isExternal = False
 
     def init(self):
         self._closed = False
@@ -1010,6 +1012,7 @@ class PlexPlayer(xbmc.Player, signalsmixin.SignalsMixin):
         self.currentTime = 0
         self.thread = None
         self.ignoreStopEvents = False
+        self.isExternal = False
         if xbmc.getCondVisibility('Player.HasMedia'):
             self.started = True
         self.resume = False
@@ -1488,7 +1491,8 @@ class PlexPlayer(xbmc.Player, signalsmixin.SignalsMixin):
     def onAVStarted(self):
         if not self.sessionID:
             return
-        util.DEBUG_LOG('Player - AVStarted: {}'.format(self.handler))
+        util.DEBUG_LOG('Player - AVStarted: {}', self.handler)
+        self.isExternal = self.isExternalPlayer()
         self.trigger('av.started')
         if not self.handler:
             return
