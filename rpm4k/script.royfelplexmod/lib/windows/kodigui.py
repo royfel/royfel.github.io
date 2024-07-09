@@ -236,6 +236,14 @@ class BaseWindow(xbmcgui.WindowXML, BaseFunctions):
         xbmcgui.WindowXML.show(self)
         self.isOpen = xbmcgui.getCurrentWindowId() >= 13000
 
+    @property
+    def is_active(self):
+        return self._winID and BaseFunctions.lastWinID == self._winID
+
+    @property
+    def is_current_window(self):
+        return self._winID and xbmcgui.getCurrentWindowId() == self._winID
+
     def onClosed(self):
         pass
 
@@ -698,6 +706,9 @@ class ManagedControlList(object):
         pos = self.getManagedItemPosition(item)
         if self.positionIsValid(pos):
             self.control.selectItem(pos)
+
+    def setSelectedItemByDataSource(self, data_source):
+        self.setSelectedItem(self.getListItemByDataSource(data_source))
 
     def removeItem(self, index):
         old = self.items.pop(index)

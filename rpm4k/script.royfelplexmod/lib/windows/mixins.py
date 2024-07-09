@@ -57,6 +57,7 @@ class SeasonsMixin:
 
         items = []
         idx = 0
+        focus = None
         for season in seasons:
             if selectSeason and season == selectSeason:
                 continue
@@ -67,7 +68,8 @@ class SeasonsMixin:
                 mli.setProperty('thumb.fallback', 'script.plex/thumb_fallbacks/show.png')
                 mli.setProperty('unwatched.count', not season.isWatched and str(season.unViewedLeafCount) or '')
                 mli.setBoolProperty('watched', season.isFullyWatched)
-                if not season.isWatched:
+                if not season.isWatched and focus is None:
+                    focus = idx
                     mli.setProperty('progress', util.getProgressImage(None, self.getSeasonProgress(show, season)))
                 items.append(mli)
                 idx += 1
@@ -78,6 +80,9 @@ class SeasonsMixin:
         else:
             subItemListControl.reset()
             subItemListControl.addItems(items)
+
+        if focus is not None:
+            subItemListControl.setSelectedItemByPos(focus)
 
         return True
 
@@ -149,9 +154,9 @@ class SpoilersMixin(object):
         self.spoilerSetting = "unwatched"
         self.noTitles = False
         self.spoilersAllowedFor = True
-        self.storeSpoilerSettings()
+        self.cacheSpoilerSettings()
 
-    def storeSpoilerSettings(self):
+    def cacheSpoilerSettings(self):
         self.spoilerSetting = util.getSetting('no_episode_spoilers2', "unwatched")
         self.noTitles = util.getSetting('no_unwatched_episode_titles', False)
         self.spoilersAllowedFor = util.getSetting('spoilers_allowed_genres2', ["Reality", "Game Show", "Documentary",

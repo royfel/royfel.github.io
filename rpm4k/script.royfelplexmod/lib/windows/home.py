@@ -648,6 +648,7 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
 
         player.PLAYER.on('session.ended', self.updateOnDeckHubs)
         util.MONITOR.on('changed.watchstatus', self.updateOnDeckHubs)
+        util.MONITOR.on('screensaver.activated', self.disableUpdates)
         util.MONITOR.on('screensaver.deactivated', self.refreshLastSection)
         util.MONITOR.on('dpms.deactivated', self.refreshLastSection)
         util.MONITOR.on('system.sleep', self.disableUpdates)
@@ -674,6 +675,7 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
 
         player.PLAYER.off('session.ended', self.updateOnDeckHubs)
         util.MONITOR.off('changed.watchstatus', self.updateOnDeckHubs)
+        util.MONITOR.off('screensaver.activated', self.disableUpdates)
         util.MONITOR.off('screensaver.deactivated', self.refreshLastSection)
         util.MONITOR.off('dpms.deactivated', self.refreshLastSection)
         util.MONITOR.off('system.sleep', self.disableUpdates)
@@ -687,7 +689,8 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
         if hubs is None:
             return
 
-        if time.time() - hubs.lastUpdated > HUBS_REFRESH_INTERVAL and not xbmc.Player().isPlayingVideo():
+        if (self.is_active and time.time() - hubs.lastUpdated > HUBS_REFRESH_INTERVAL and
+                not xbmc.Player().isPlayingVideo()):
             self.showHubs(self.lastSection, update=True)
 
     def shutdown(self):
@@ -940,6 +943,7 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
         self.processCommand(search.dialog(self))
 
     def updateOnDeckHubs(self, **kwargs):
+        util.DEBUG_LOG('UpdateOnDeckHubs called')
         if util.getSetting("speedy_home_hubs2", False):
             util.DEBUG_LOG("Using alternative home hub refresh")
             sections = set()
@@ -959,7 +963,7 @@ class HomeWindow(kodigui.BaseWindow, util.CronReceiver, SpoilersMixin):
 
     def setDirty(self, *args, **kwargs):
         self._reloadOnReinit = True
-        self.storeSpoilerSettings()
+        self.cacheSpoilerSettings()
 
     def fullyRefreshHome(self, *args, section=None, **kwargs):
         self.showSections(focus_section=section or home_section)

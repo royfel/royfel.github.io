@@ -93,6 +93,9 @@ class CurrentPlaylistWindow(kodigui.ControlledWindow, windowutils.UtilMixin):
     def onAction(self, action):
         try:
             controlID = self.getFocusId()
+            if action in (xbmcgui.ACTION_PREVIOUS_MENU, xbmcgui.ACTION_NAV_BACK):
+                self.doClose()
+                return
             if self.checkSeekActions(action, controlID):
                 return
         except:
@@ -206,7 +209,7 @@ class CurrentPlaylistWindow(kodigui.ControlledWindow, windowutils.UtilMixin):
         self.doClose()
 
     def selectPlayingItem(self):
-        for mli in self.playlistListControl:
+        for mli in reversed(self.playlistListControl):
             if xbmc.getCondVisibility('String.StartsWith(MusicPlayer.Comment,{0})'.format(mli.dataSource['comment'].split(':', 1)[0])):
                 self.playlistListControl.selectItem(mli.pos())
                 break

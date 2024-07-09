@@ -363,6 +363,7 @@ class EpisodesWindow(kodigui.ControlledWindow, windowutils.UtilMixin, SeasonsMix
         if not reload_items:
             self.selectPlayButton()
         self.reloadItems(items=reload_items, with_progress=True, skip_progress_for=skip_progress_for)
+        self.fillSeasons(self.show_, seasonsFilter=lambda x: len(x) > 1, selectSeason=self.season, update=True)
         self.fillRelated()
 
     def postSetup(self):
@@ -870,8 +871,6 @@ class EpisodesWindow(kodigui.ControlledWindow, windowutils.UtilMixin, SeasonsMix
             util.messageDialog(T(32312, 'unavailable'), T(32332, 'This item is currently unavailable.'))
             return
 
-        self.playBtnClicked = True
-
         resume = False
         if episode.viewOffset.asInt():
             choice = dropdown.showDropdown(
@@ -891,6 +890,9 @@ class EpisodesWindow(kodigui.ControlledWindow, windowutils.UtilMixin, SeasonsMix
 
             if choice['key'] == 'resume':
                 resume = True
+
+        if not from_auto_play:
+            self.playBtnClicked = True
 
         pl = playlist.LocalPlaylist(self.show_.all(), self.show_.getServer())
         try:
