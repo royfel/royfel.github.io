@@ -1,0 +1,5 @@
+  <cache><!-- managed by RPM4K -->
+    <buffermode>1</buffermode>
+    <memorysize>{memorysize}</memorysize>
+    <readfactor>{readfactor}</readfactor>
+  </cache>
