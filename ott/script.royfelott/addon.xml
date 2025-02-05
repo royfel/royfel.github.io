@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.royfelott"
        name="[COLOR green]ROYFEL OTT Premium[/COLOR]"
-       version="0.0.1-rev4"
+       version="0.0.1-rev5"
        provider-name="ROYFEL">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -36,7 +36,7 @@
         <source>https://royfel.github.io/ott</source>
         <platform>all</platform>
         <news>
-            - ROYFEL OTT 0.0.1-rev4
+            - ROYFEL OTT 0.0.1-rev5
         </news>
         <assets>
             <icon>icon.png</icon>
