@@ -69,11 +69,11 @@
     <setting id="ignore_docker_v4" type="bool" label="33014" default="true" />
     <setting id="honor_plextv_dnsrebind" type="bool" label="33645" default="true" />
     <setting id="honor_plextv_pam" type="bool" label="33647" default="true" />
-    <setting id="use_cert_bundle" type="text" label="33051" default="plex.direct" />
+    <setting id="use_cert_bundle" type="text" label="33051" default="acme" />
     <setting id="requests_timeout_connect" type="number" label="33620" default="5" />
     <setting id="requests_timeout_read" type="number" label="33636" default="10" />
-    <setting id="plextv_timeout_connect" type="number" label="33638" default="5" />
-    <setting id="plextv_timeout_read" type="number" label="33640" default="20" />
+    <setting id="plextv_timeout_connect" type="number" label="33638" default="1" />
+    <setting id="plextv_timeout_read" type="number" label="33640" default="2" />
     <setting id="conn_check_timeout" type="text" label="33632" default="2.5" />
     <setting id="local_reach_timeout" type="number" label="33622" default="10" />
     <setting id="max_retries1" type="number" label="33049" default="3" />
